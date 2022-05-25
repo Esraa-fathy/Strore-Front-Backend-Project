@@ -35,10 +35,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+var db_1 = __importDefault(require("../../db"));
 var userModel_1 = require("../../models/userModel");
 var module = new userModel_1.Model_OF_User();
-//let user_test: User;
 describe("USER MODEL", function () {
     describe("Test CRUD API methods", function () {
         it(" create method ", function () {
@@ -57,13 +60,22 @@ describe("USER MODEL", function () {
             expect(module.delete).toBeDefined();
         });
     });
-    // afterAll(async () => {
-    //   const connection = await pool.connect();
-    //   const sql =
-    //     'DELETE FROM orderProducts;\nDELETE FROM orders;\nDELETE FROM products;\nDELETE FROM users;';
-    //   await connection.query(sql);
-    //   connection.release();
-    // });
+    afterAll(function () { return __awaiter(void 0, void 0, void 0, function () {
+        var connection, sql;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, db_1.default.connect()];
+                case 1:
+                    connection = _a.sent();
+                    sql = 'DELETE FROM orderProducts;\nDELETE FROM orders;\nDELETE FROM products;\nDELETE FROM users;';
+                    return [4 /*yield*/, connection.query(sql)];
+                case 2:
+                    _a.sent();
+                    connection.release();
+                    return [2 /*return*/];
+            }
+        });
+    }); });
     it("Shoud create new user", function () { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
@@ -76,7 +88,6 @@ describe("USER MODEL", function () {
                     })];
                 case 1:
                     result = _a.sent();
-                    // user_test = result;
                     console.log(result.id);
                     expect(result.first_name).toEqual("nono");
                     expect(result.last_name).toEqual("Fathy");

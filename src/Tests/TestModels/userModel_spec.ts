@@ -1,9 +1,6 @@
 import pool from "../../db";
 import { User, Model_OF_User } from "../../models/userModel";
-
 const module = new Model_OF_User();
-//let user_test: User;
-
 describe("USER MODEL", () => {
   describe("Test CRUD API methods", () => {
     it(" create method ", () => {
@@ -22,13 +19,13 @@ describe("USER MODEL", () => {
       expect(module.delete).toBeDefined();
     });
   });
-  // afterAll(async () => {
-  //   const connection = await pool.connect();
-  //   const sql =
-  //     'DELETE FROM orderProducts;\nDELETE FROM orders;\nDELETE FROM products;\nDELETE FROM users;';
-  //   await connection.query(sql);
-  //   connection.release();
-  // });
+  afterAll(async () => {
+    const connection = await pool.connect();
+    const sql =
+      'DELETE FROM orderProducts;\nDELETE FROM orders;\nDELETE FROM products;\nDELETE FROM users;';
+    await connection.query(sql);
+    connection.release();
+  });
   it("Shoud create new user", async () => {
     const result = await module.create({
       first_name: "nono",
@@ -36,7 +33,6 @@ describe("USER MODEL", () => {
       email: "n@jjsgmail",
       pass: "test",
     });
-   // user_test = result;
    console.log(result.id);
     expect(result.first_name).toEqual("nono");
     expect(result.last_name).toEqual("Fathy");

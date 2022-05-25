@@ -6,10 +6,7 @@ export type Product = {
   category: string;
  
 };
-
-
  export class Model_OF_Product {
-
 
     // create new product
   async create(p: Product): Promise<Product> {

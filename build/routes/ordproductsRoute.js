@@ -19,7 +19,7 @@ ordproductsRoute.get("/TestingOP", function (req, res) {
 console.log("OrderProducts Middleware is Runing!");
 ordproductsRoute.post("/op", verifyAuthentication_1.default, ordproductsHelper_1.create);
 ordproductsRoute.get("/op", verifyAuthentication_1.default, ordproductsHelper_1.index);
-ordproductsRoute.get("/op", verifyAuthentication_1.default, ordproductsHelper_1.orderinproduct);
+ordproductsRoute.get("/ops", verifyAuthentication_1.default, ordproductsHelper_1.orderinproduct);
 ordproductsRoute.delete("/op/:id/:id", verifyAuthentication_1.default, ordproductsHelper_1.Delete);
 ordproductsRoute.put("/op/:id", verifyAuthentication_1.default, ordproductsHelper_1.update);
 exports.default = ordproductsRoute;

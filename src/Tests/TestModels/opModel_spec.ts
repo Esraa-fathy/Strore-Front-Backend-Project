@@ -1,27 +1,16 @@
 import { User, Model_OF_User } from "../../models/userModel";
 import { Product, Model_OF_Product } from "../../models/productModel";
 import { Order, Model_OF_Order } from "../../models/orderModel";
+import{Ordproducts,Model_OF_Ordproducts} from '../../models/ordproductsModel';
 import pool from "../../db";
 const userTestModel = new Model_OF_User();
 const productTestModel = new Model_OF_Product();
 const orderTestModel = new Model_OF_Order();
-
-describe("PRODUCT MODEL", () => {
+const OPTestModel = new Model_OF_Ordproducts();
+describe("ORDER_PRODUCT METHOD", () => {
   describe("Test CRUD API methods", () => {
-    it(" create method ", () => {
-      expect(productTestModel.create).toBeDefined();
-    });
-
-    it(" DisplayAllproducts method", () => {
-      expect(productTestModel.displayAllproducts).toBeDefined();
-    });
-
-    it(" ShowOneProduct method", () => {
-      expect(productTestModel.showOneProduct).toBeDefined();
-    });
-
-    it(" Delete method ", () => {
-      expect(productTestModel.delete).toBeDefined();
+    it("orderinproduct Method", () => {
+      expect(OPTestModel.orderinproduct).toBeDefined();
     });
   });
   describe("Test Model logic", () => {
@@ -31,21 +20,25 @@ describe("PRODUCT MODEL", () => {
       email: "naglaafathy4256219@gmail.com",
       pass: "test",
     };
-
     const products: Product = {
-      name: "fried Checken",
-      price: 100,
-      category: "food",
-    };
+        name: "fried Checken",
+        price: 100,
+        category: "food",
+      };
 
-    const orders: Order = {
-      user_id: 1,
-      status: "active",
+      const orders: Order = {
+        user_id: 1,
+        status: "active",
+      };
+    const OP: Ordproducts = {
+      quantity: 55,
+      order_id: 1,
+      product_id: 1,
     };
-
     beforeAll(async () => {
       await userTestModel.create(user);
       await orderTestModel.create(orders);
+      await productTestModel.create(products);
     });
     afterAll(async () => {
       const connection = await pool.connect();
@@ -54,19 +47,9 @@ describe("PRODUCT MODEL", () => {
       await connection.query(sql);
       connection.release();
     });
-    it("Add new pruduct", async () => {
-      const createdproduct = await productTestModel.create(products);
-      expect(createdproduct.id).toEqual(1);
-    });
-
-    it("List of product", async () => {
-        const products = await productTestModel.displayAllproducts();
-        expect(products.length).toBeGreaterThan(0);
-      });
-
-    it("Return specefic product", async () => {
-      const returnedproduct = await productTestModel.showOneProduct("1");
-      expect(returnedproduct.id).toEqual(1);
+    it("Add new op", async () => {
+      const createdOrderProduct = await OPTestModel.create(OP);
+      expect(createdOrderProduct.quantity).toEqual(55);
     });
   });
 });

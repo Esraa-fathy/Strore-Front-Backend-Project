@@ -14,21 +14,4 @@ var pool = new pg_1.Pool({
     user: USERName_DB,
     password: passward_DB,
 });
-// if (ENV === "test") {
-//   console.log("test environment");
-//   client = new Pool({
-//     host: host,
-//     database: DB_TEST,
-//     user: pg_user,
-//     password: pg_password,
-//   });
-// } else {
-//   console.log("develope environment");
-//   client = new Pool({
-//     host: host,
-//     database: pg_db,
-//     user: pg_user,
-//     password: pg_password,
-//   });
-// }
 exports.default = pool;

@@ -17,7 +17,7 @@ ordproductsRoute.get("/TestingOP", (req: Request, res: Response) => {
 console.log(`OrderProducts Middleware is Runing!`);
 ordproductsRoute.post("/op", verifyAuthToken,create);
 ordproductsRoute.get("/op", verifyAuthToken ,index);
-ordproductsRoute.get("/op", verifyAuthToken, orderinproduct);
+ordproductsRoute.get("/ops", verifyAuthToken, orderinproduct);
 ordproductsRoute.delete("/op/:id/:id",verifyAuthToken, Delete);
 ordproductsRoute.put("/op/:id",verifyAuthToken ,update);
 

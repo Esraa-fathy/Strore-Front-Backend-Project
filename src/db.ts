@@ -21,22 +21,4 @@ const {
   });
  
 
-// if (ENV === "test") {
-//   console.log("test environment");
-//   client = new Pool({
-//     host: host,
-//     database: DB_TEST,
-//     user: pg_user,
-//     password: pg_password,
-//   });
-// } else {
-//   console.log("develope environment");
-//   client = new Pool({
-//     host: host,
-//     database: pg_db,
-//     user: pg_user,
-//     password: pg_password,
-//   });
-// }
-
 export default pool ;
