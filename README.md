@@ -29,7 +29,8 @@ First, create a `.env` file with all the required environment variables:
 NODE_ENV=dev
 # Sensetive database info
 HOST= "127.0.0.1"
-DB_PORT=4000
+port=4000
+DB_PORT=5432
 db_pg=store_info
 TEST_DB=store_test
 USERName_DB=postgres
