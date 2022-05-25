@@ -8,7 +8,7 @@ const {
     db_pg,
     TEST_DB,
     USERName_DB,
-    passward_DB, 
+    passward_DB,
     TOKEN } = process.env;
     console.log("database connected");
  const pool = new Pool({

@@ -12,8 +12,8 @@ productRoute.get("/TestingP", (req: Request, res: Response) => {
 });
 console.log(`Product Middleware is Runing!`);
 productRoute.post("/products",verifyAuthToken, create);
-productRoute.get("/products", verifyAuthToken, displayAll);
-productRoute.get("/products/:id", verifyAuthToken, show);
+productRoute.get("/products", displayAll);
+productRoute.get("/products/:id",  show);
 productRoute.delete("/products/:id", verifyAuthToken,Delete);
 productRoute.put("/products/:id", verifyAuthToken,update);
 

@@ -12,7 +12,7 @@ import ordproductsRoute from "./routes/ordproductsRoute";
 dotenv.config();
 
 const app: express.Application = express();
-const port = process.env.DB_PORT || 3000;
+const port = process.env.port || 3000;
 app.use(cors(), helmet(), json(), morgan("dev"));
 
  app.use("/", userRoute);
